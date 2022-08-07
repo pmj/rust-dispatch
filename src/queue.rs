@@ -281,6 +281,11 @@ impl Queue {
     pub fn suspend(&self) -> SuspendGuard {
         SuspendGuard::new(self)
     }
+
+		/// For obtaining the inner pointer when interacting with other system frameworks
+		pub unsafe fn as_ptr(&self) -> dispatch_queue_t {
+			self.ptr
+		}
 }
 
 unsafe impl Sync for Queue { }
